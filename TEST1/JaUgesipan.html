@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자유게시판</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+    }
+
+    body {
+      background-color: #f5f6f8;
+    }
+
+    /* 헤더 스타일 */
+    .header {
+      background-color: white;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 12px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5479F2;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .user-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .user-menu a {
+      color: #5479F2;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    /* 메인 컨테이너 */
+    .container {
+      max-width: 1200px;
+      margin: 80px auto; /* 헤더 높이만큼 마진 추가 */
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 게시글 리스트 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #f8f9fa;
+    }
+
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* 글쓰기 버튼 */
+    .write-btn {
+      position: fixed; /* 화면에 고정 */
+      bottom: 20px; /* 화면 하단에서 떨어진 거리 */
+      right :20px ;
+      padding :10px 16px ;
+      background-color:#007bff ;
+      color:white ;
+      text-decoration:none ;
+      border-radius : 5px ;
+      cursor :pointer;
+      box-shadow :0px 4px 6px rgba(0 ,0 ,0 ,0.1)
+    }
+
+    /* 페이지네이션 스타일 */
+    .pagination{
+      display:flex;
+      justify-content:center;
+      margin-top : 30px
+    }
+
+    .pagination a{
+      color:#007bff ;
+      padding : 8px 16px ;
+      text-decoration:none ;
+      border : 1px solid #ddd ;
+      margin : 0px 3px ;
+      border-radius : 4px
+    }
+
+    .pagination a.active{
+      background-color:#007bff ;
+      color:white ;
+      border : 1px solid #007bff
+    }
+
+    .pagination a:hover{
+      background-color:#ddd
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- 상단 헤더 -->
+<header class="header">
+  <div class="logo" onclick="location.href='ysProject.html'">청룡인</div>
+  <nav class="nav-menu">
+    <a href=JaUgesipan.html>게시판</a>
+    <a href="#cafe">공지사항</a>
+    <a href="#blog">챗봇상담</a>
+    <a href="#mail">정신건강 사업정보</a>
+  </nav>
+  <div class="user-menu">
+    <a href=login.html>로그인</a>
+    <a href=signUp.html>회원가입</a>
+  </div>
+</header>
+
+<!-- 메인 컨테이너 -->
+<div class="container">
+
+  <!-- 게시글 리스트 -->
+  <h2>전체 글 보기</h2>
+
+  <!-- 게시글 리스트 -->
+  <table>
+    <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>날짜</th>
+      <th>조회수</th>
+    </tr>
+    </thead>
+
+    <!-- 게시글 내용 -->
+    <tbody>
+
+    <!-- 공지사항 -->
+    <tr style="background-color:#f8f9fa;">
+      <td>공지</td>
+      <td><a href="#">필독! 게시판 이용 안내</a></td>
+      <td>운영자</td>
+      <td>2024-11-05</td>
+      <td>462</td>
+    </tr>
+
+    <!-- 일반 게시글 -->
+    <tr>
+      <td>813</td>
+      <td><a href="#">오늘 날씨가 정말 좋네요!</a></td>
+      <td>행복한회원</td>
+      <td>2024-11-05</td>
+      <td>343</td>
+    </tr>
+
+    <!-- 더 많은 게시글 추가 가능 -->
+    <!-- 예시로 몇 개의 게시글 추가 -->
+    <tr>
+      <td>812</td>
+      <td><a href="#">새로운 취미를 시작했어요!</a></td>
+      <td>열심회원</td>
+      <td>2024-11-05</td>
+      <td>24</td>
+    </tr>
+
+    </tbody>
+
+  </table>
+
+  <!-- 글쓰기 버튼 (우측 하단으로 고정) -->
+  <a href="#" class="write-btn">글쓰기</a>
+
+  <!-- 페이지네이션 -->
+  <div class="pagination">
+    <!-- 이전 페이지 링크 -->
+    <a href="#">&laquo; 이전</a>
+
+    <!-- 현재 페이지는 active 클래스를 추가하여 강조 -->
+    <a href="#" class="active">1</a>
+
+    <!-- 다른 페이지 링크들 -->
+    <a href="#">2</a>
+
+    <!-- 페이지가 많을 경우 생략 표시 가능 -->
+    ...
+
+    <!-- 마지막 페이지로 이동하는 링크 -->
+    <a href="#">10</a>
+
+    <!-- 다음 페이지로 이동하는 링크 -->
+    <a href="#">다음 &raquo;</a>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
