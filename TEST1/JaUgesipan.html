@@ -66,10 +66,12 @@
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     /* 게시글 리스트 */
     table {
+      margin-top: 20px;
       width: 100%;
       border-collapse: collapse;
     }
@@ -90,14 +92,14 @@
 
     /* 글쓰기 버튼 */
     .write-btn {
-      position: fixed; /* 화면에 고정 */
+      position: absolute; /* 화면에 고정 */
       bottom: 20px; /* 화면 하단에서 떨어진 거리 */
       right :20px ;
       padding :10px 16px ;
       background-color:#007bff ;
       color:white ;
-      text-decoration:none ;
-      border-radius : 5px ;
+      text-decoration : none ;
+      border-radius : 5px;
       cursor :pointer;
       box-shadow :0px 4px 6px rgba(0 ,0 ,0 ,0.1)
     }
@@ -136,8 +138,8 @@
 <header class="header">
   <div class="logo" onclick="location.href='ysProject.html'">청룡인</div>
   <nav class="nav-menu">
-    <a href=JaUgesipan.html>게시판</a>
-    <a href="#cafe">공지사항</a>
+    <a href="AllBulletinBoards.html">게시판</a>
+    <a href="notice.html">공지사항</a>
     <a href="#blog">챗봇상담</a>
     <a href="#mail">정신건강 사업정보</a>
   </nav>
@@ -151,7 +153,7 @@
 <div class="container">
 
   <!-- 게시글 리스트 -->
-  <h2>전체 글 보기</h2>
+  <h2>자유게시판</h2>
 
   <!-- 게시글 리스트 -->
   <table>
@@ -181,7 +183,7 @@
     <tr>
       <td>813</td>
       <td><a href="#">오늘 날씨가 정말 좋네요!</a></td>
-      <td>행복한 회원</td>
+      <td>행복한회원</td>
       <td>2024-11-05</td>
       <td>343</td>
     </tr>
@@ -201,7 +203,7 @@
   </table>
 
   <!-- 글쓰기 버튼 (우측 하단으로 고정) -->
-  <a href="#" class="write-btn">글쓰기</a>
+  <a href="writing.html" class="write-btn">글쓰기</a>
 
   <!-- 페이지네이션 -->
   <div class="pagination">
