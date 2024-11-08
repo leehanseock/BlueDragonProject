@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>자유 게시판</title>
+  <title>갤러리</title>
   <style>
     * {
       margin: 0;
@@ -89,6 +89,12 @@
     table tr:hover {
       background-color: #f1f1f1;
     }
+    .thumbnail {
+      width: 50px; /* 썸네일의 가로 크기 */
+      height: 50px; /* 썸네일의 세로 크기 */
+      object-fit: cover; /* 이미지 비율을 유지하면서 크기에 맞게 자르기 */
+      border-radius: 4px; /* 선택 사항: 모서리를 둥글게 만들기 */
+    }
 
     /* 글쓰기 버튼 */
     .write-btn {
@@ -153,12 +159,12 @@
 <div class="container">
 
   <!-- 게시글 리스트 -->
-  <h2>자유게시판</h2>
+  <h2>갤러리</h2>
 
-  <!-- 게시글 리스트 -->
   <table>
     <thead>
     <tr>
+      <th>썸네일</th> <!-- 썸네일을 위한 새로운 열 -->
       <th>번호</th>
       <th>제목</th>
       <th>작성자</th>
@@ -166,41 +172,27 @@
       <th>조회수</th>
     </tr>
     </thead>
-
-    <!-- 게시글 내용 -->
     <tbody>
-
-    <!-- 공지사항 -->
-    <tr style="background-color:#f8f9fa;">
-      <td>공지</td>
-      <td><a href="#">필독! 게시판 이용 안내</a></td>
-      <td>운영자</td>
-      <td>2024-11-05</td>
-      <td>462</td>
-    </tr>
-
-    <!-- 일반 게시글 -->
+    <!-- 썸네일이 있는 예시 행 -->
     <tr>
+      <td><img src="https://via.placeholder.com/80x60" alt="썸네일" class="thumbnail"></td> <!-- 썸네일 이미지 경로 추가 -->
       <td>813</td>
       <td><a href="#">오늘 날씨가 정말 좋네요!</a></td>
       <td>행복한회원</td>
       <td>2024-11-05</td>
       <td>343</td>
     </tr>
-
-    <!-- 더 많은 게시글 추가 가능 -->
-    <!-- 예시로 몇 개의 게시글 추가 -->
     <tr>
+      <td><img src="https://via.placeholder.com/80x60" alt="썸네일" class="thumbnail"></td> <!-- 다른 썸네일 -->
       <td>812</td>
       <td><a href="#">새로운 취미를 시작했어요!</a></td>
       <td>열심회원</td>
       <td>2024-11-05</td>
       <td>24</td>
     </tr>
-
     </tbody>
-
   </table>
+
 
   <!-- 글쓰기 버튼 (우측 하단으로 고정) -->
   <a href="writing.html" class="write-btn">글쓰기</a>

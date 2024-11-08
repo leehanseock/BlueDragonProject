@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>자유 게시판</title>
+  <title>공지사항</title>
   <style>
     * {
       margin: 0;
@@ -90,19 +90,6 @@
       background-color: #f1f1f1;
     }
 
-    /* 글쓰기 버튼 */
-    .write-btn {
-      position: absolute; /* 화면에 고정 */
-      bottom: 20px; /* 화면 하단에서 떨어진 거리 */
-      right :20px ;
-      padding :10px 16px ;
-      background-color:#007bff ;
-      color:white ;
-      text-decoration : none ;
-      border-radius : 5px;
-      cursor :pointer;
-      box-shadow :0px 4px 6px rgba(0 ,0 ,0 ,0.1)
-    }
 
     /* 페이지네이션 스타일 */
     .pagination{
@@ -153,7 +140,7 @@
 <div class="container">
 
   <!-- 게시글 리스트 -->
-  <h2>자유게시판</h2>
+  <h2>공지사항</h2>
 
   <!-- 게시글 리스트 -->
   <table>
@@ -170,40 +157,36 @@
     <!-- 게시글 내용 -->
     <tbody>
 
-    <!-- 공지사항 -->
+    <!-- 공지사항 항목 -->
     <tr style="background-color:#f8f9fa;">
       <td>공지</td>
-      <td><a href="#">필독! 게시판 이용 안내</a></td>
+      <td><a href="#">2024년 하반기 운영 계획 안내</a></td>
       <td>운영자</td>
       <td>2024-11-05</td>
       <td>462</td>
     </tr>
 
-    <!-- 일반 게시글 -->
-    <tr>
-      <td>813</td>
-      <td><a href="#">오늘 날씨가 정말 좋네요!</a></td>
-      <td>행복한회원</td>
-      <td>2024-11-05</td>
-      <td>343</td>
+    <!-- 공지사항 항목 -->
+    <tr style="background-color:#f8f9fa;">
+      <td>공지</td>
+      <td><a href="#">커뮤니티 이용 수칙 변경 안내</a></td>
+      <td>운영자</td>
+      <td>2024-10-25</td>
+      <td>345</td>
     </tr>
 
-    <!-- 더 많은 게시글 추가 가능 -->
-    <!-- 예시로 몇 개의 게시글 추가 -->
-    <tr>
-      <td>812</td>
-      <td><a href="#">새로운 취미를 시작했어요!</a></td>
-      <td>열심회원</td>
-      <td>2024-11-05</td>
-      <td>24</td>
+    <!-- 공지사항 항목 -->
+    <tr style="background-color:#f8f9fa;">
+      <td>공지</td>
+      <td><a href="#">청룡인 커뮤니티 서버 점검 안내 (11/10)</a></td>
+      <td>운영자</td>
+      <td>2024-10-15</td>
+      <td>298</td>
     </tr>
 
     </tbody>
 
   </table>
-
-  <!-- 글쓰기 버튼 (우측 하단으로 고정) -->
-  <a href="writing.html" class="write-btn">글쓰기</a>
 
   <!-- 페이지네이션 -->
   <div class="pagination">
