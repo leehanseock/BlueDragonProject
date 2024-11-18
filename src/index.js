@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import AllBulletinBoards from "./AllBulletinBoards/ABB";
+import Notice from "./Notice/Notice";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Notice/>
   </React.StrictMode>
 );
 

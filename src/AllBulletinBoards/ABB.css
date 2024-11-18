@@ -1,0 +1,83 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "\B098\D0C0 \ACE0\B515", helvetica, "Apple SD Gothic Neo", sans-serif;
+}
+
+body {
+    background-color: #f5f6f8;
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Post List Table */
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f8f9fa;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Write Button */
+.write-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination a {
+    color: #007bff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
