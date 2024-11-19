@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 제목 - 청룡인</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+    }
+
+    body {
+      background-color: #f5f6f8;
+    }
+
+    .header {
+      background-color: white;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 12px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5479F2;
+      cursor: pointer;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .user-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .user-menu a {
+      color: #5479F2;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 80px auto 0;
+      padding: 20px;
+    }
+
+    .post-container {
+      background-color: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 30px;
+    }
+
+    .post-header {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .post-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .post-info {
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .post-author {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .author-image {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+    }
+
+    .post-stats {
+      display: flex;
+      gap: 15px;
+    }
+
+    .post-content {
+      min-height: 300px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .post-footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .reaction-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .button {
+      padding: 8px 16px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      background-color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .button:hover {
+      background-color: #f8f8f8;
+    }
+
+    .comments-section {
+      margin-top: 30px;
+    }
+
+    .comment-form {
+      margin-top: 20px;
+    }
+
+    .comment-input {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      resize: none;
+      margin-bottom: 10px;
+    }
+  /* ---------------------------------------------------------------------------------------------------------------- */
+
+    .post-list {
+      margin-top: 20px;
+      background-color: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .post-list-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .post-list table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .post-list th {
+      padding: 12px;
+      text-align: left;
+      font-size: 13px;
+      color: #666;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      background-color: #f8f9fa;
+    }
+
+    .post-list td {
+      padding: 12px;
+      font-size: 13px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .post-list tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    .post-list a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .post-list a:hover {
+      text-decoration: underline;
+    }
+
+    .comment-count {
+      color: #ff4b4b;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      padding: 6px 10px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      color: #333;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .pagination a.active {
+      background-color: #5479F2;
+      color: white;
+      border-color: #5479F2;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="logo" onclick="location.href='ysProject.html'">청룡인</div>
+  <nav class="nav-menu">
+    <a href="AllBulletinBoards.html">게시판</a>
+    <a href="notice.html">공지사항</a>
+    <a href="#blog">챗봇상담</a>
+    <a href="#mail">정신건강 사업정보</a>
+  </nav>
+  <div class="user-menu">
+    <a href="login.html">로그인</a>
+    <a href="signUp.html">회원가입</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="post-container">
+    <div class="post-header">
+      <h1 class="post-title">게시글 제목이 여기에 표시됩니다</h1>
+      <div class="post-info">
+        <div class="post-author">
+          <div class="author-image"></div>
+          <span>작성자 이름</span>
+          <span>2024.11.19</span>
+        </div>
+        <div class="post-stats">
+          <span>조회 123</span>
+          <span>댓글 45</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      게시글 내용이 여기에 표시됩니다.
+      여러 줄의 텍스트가 들어갈 수 있습니다.
+    </div>
+
+    <div class="post-footer">
+      <div class="reaction-buttons">
+        <button class="button">👍 좋아요</button>
+        <button class="button">💬 댓글</button>
+      </div>
+      <div>
+        <button class="button">수정</button>
+        <button class="button">삭제</button>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h3>댓글</h3>
+      <div class="comment-form">
+        <textarea class="comment-input" placeholder="댓글을 입력하세요"></textarea>
+        <button class="button">댓글 작성</button>
+      </div>
+    </div>
+    <div class="post-list">
+      <div class="post-list-title">전체글</div>
+      <table>
+        <thead>
+        <tr>
+          <th style="width: 60%">제목</th>
+          <th style="width: 20%">작성자</th>
+          <th style="width: 20%">작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="#">[생방송] 누가 예상을 물리자마자 ㅋㅋㅋ</a>
+            <span class="comment-count">[54]</span>
+          </td>
+          <td>칼칼멸어</td>
+          <td>2024.11.15.</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#">[자유] 씹덕왔니?</a>
+          </td>
+          <td>마현빈</td>
+          <td>2024.11.15.</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#">[공지] 오늘 조금 늦음 ㅅㄱ</a>
+            <span class="comment-count">[13]</span>
+          </td>
+          <td>이한석</td>
+          <td>2024.11.15.</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#">[유머] 목균 폴렌스 중고시설 당신은 어디에?</a>
+          </td>
+          <td>마녀의 일상</td>
+          <td>2024.11.15.</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#">[자유]8시부터 늦게 오실거 같음</a>
+            <span class="comment-count">[23]</span>
+          </td>
+          <td>낭이s</td>
+          <td>2024.11.15.</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+      </div>
+  </div>
+</div>
+</body>
+</html>
