@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Gallery/Gallery.css';
+import '../can/Gallery/Gallery.css';
 import Header from "../MainResource/Header";
 
 
@@ -89,7 +89,7 @@ const Pagination = ({ totalPosts, itemsPerPage, currentPage, setCurrentPage }) =
 
 
 
-function Notiec() {
+function Notice() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5; // Number of items per page
@@ -112,4 +112,4 @@ function Notiec() {
     );
 }
 
-export default Notiec;
+export default Notice;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Gallery.css';
-import Header from "../MainResource/Header"; // Ensure to create and import the corresponding CSS file.
+import Header from "../../MainResource/Header"; // Ensure to create and import the corresponding CSS file.
 
 
 function PostRow({ thumbnail, number, title, author, date, views }) {

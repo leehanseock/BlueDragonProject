@@ -12,7 +12,7 @@ body {
 
 /* 메인 컨테이너 */
 .container {
-    max-width: 1200px;
+    min-width: 1200px;
     margin: 80px auto; /* 헤더 높이만큼 마진 추가 */
     padding: 20px;
     background-color: white;

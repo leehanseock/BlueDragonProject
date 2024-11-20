@@ -1,4 +1,5 @@
 /* Global Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,14 +12,16 @@ body {
 }
 
 /* Main Container */
-.container {
-    max-width: 1200px;
-    margin: 80px auto;
+
+.container2 {
+    min-width: 1200px;
+    margin: 80px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+
 }
 
 /* Post List Table */
@@ -45,7 +48,7 @@ table tr:hover {
 /* Write Button */
 .write-btn {
     position: absolute;
-    bottom: 20px;
+    bottom: 120px;
     right: 20px;
     padding: 10px 16px;
     background-color: #007bff;
@@ -80,4 +83,51 @@ table tr:hover {
 
 .pagination a:hover {
     background-color: #ddd;
+}
+
+/* Search Container Styles */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.search-category {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+}
+
+.search-input {
+    padding: 8px 12px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #5479F2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-button:hover {
+    background-color: #4265d6;
+}
+
+.search-button i {
+    font-size: 14px;
 }

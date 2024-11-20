@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Gallery/Gallery.css';
+import '../can/Gallery/Gallery.css';
 import Header from "../MainResource/Header";
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Login.css"
+import Header from "../MainResource/Header";
 
 function LoginForm() {
     return (
@@ -58,10 +59,13 @@ function EasyLogin() {
 
 function Login() {
     return (
+        <>
+        <Header/>
         <div className="login-container">
             <LoginForm />
             <EasyLogin />
         </div>
+        </>
     );
 }
 

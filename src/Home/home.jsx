@@ -1,23 +1,12 @@
 import React from 'react';
 import './home.css';
+import Header from "../MainResource/Header";
+import Logo from "../MainResource/NgHook";
 
 const Home = () => {
     return (
         <>
-            <header className="header">
-                <div className="logo" onClick={() => { ; }}>청룡인</div>
-                <nav className="nav-menu">
-                    <a href="AllBulletinBoards.html">게시판</a>
-                    <a href="notice.html">공지사항</a>
-                    <a href="#blog">챗봇상담</a>
-                    <a href="#mail">정신건강 사업정보</a>
-                </nav>
-                <div className="user-menu">
-                    <a href="login.html">로그인</a>
-                    <a href="signUp.html">회원가입</a>
-                </div>
-            </header>
-
+            <Header/>
             <div className="main-container">
                 <aside className="sidebar">
                     <div className="cafe-info">
@@ -25,6 +14,7 @@ const Home = () => {
                         <p className="member-count">회원수 23,456명</p>
                     </div>
                     <ul className="menu-list">
+                        <li>전채게시판<span>1000</span> </li>
                         <li>공지사항 <span>12</span></li>
                         <li>자유게시판 <span>2,345</span></li>
                         <li>질문과답변 <span>890</span></li>
@@ -37,7 +27,7 @@ const Home = () => {
                 <main className="content">
                     <div className="board-header">
                         <h2>전체글보기</h2>
-                        <button className="more-button">더 보기</button>
+                        <Logo name={"더 보기"} loc={"/all-bulletin-boards"} className={"more-button"}/>
                     </div>
 
                     <div className="post-list">

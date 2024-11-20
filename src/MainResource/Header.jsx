@@ -1,19 +1,24 @@
 import React from "react";
 import './MainCss/Header.css';
+import {Link} from "react-router-dom";
+import Logo from "./NgHook";
+
+
 
 function Header() {
     return (
         <header className="header">
-            <div className="logo" onClick={() => window.location.href = 'ysProject.html'}>청룡인</div>
+            {/* eslint-disable-next-line no-undef */}
+            <Logo name={"청룡인"} loc={"/"} className={"logo"} />
             <nav className="nav-menu">
-                <a href="AllBulletinBoards.html">게시판</a>
-                <a href="notice.html">공지사항</a>
-                <a href="#blog">챗봇상담</a>
-                <a href="#mail">정신건강 사업정보</a>
+                <Link to="/all-bulletin-boards">게시판</Link>
+                <Link to="/Notice">공지사항</Link>
+                <Link to="/chatbot">챗봇상담</Link>
+                <Link to="/health-info">정신건강 사업정보</Link>
             </nav>
             <div className="user-menu">
-                <a href="login.html">로그인</a>
-                <a href="signUp.html">회원가입</a>
+                <Link to="/Login">로그인</Link>
+                <Link to="/signUp">회원가입</Link>
             </div>
         </header>
     );

@@ -10,44 +10,7 @@ body {
     background-color: #f5f6f8;
 }
 
-.header {
-    background-color: white;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 12px 20px;
-    position: fixed; /* 고정 위치 */
-    width: 100%;
-    top: 0;
-    z-index: 100; /* 다른 요소보다 위에 표시되도록 설정 */
-}
 
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #5479F2;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-menu a {
-    color: #333;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-.user-menu {
-    display: flex;
-    gap: 20px;
-}
-
-.user-menu a {
-    color: #5479F2;
-    text-decoration: none;
-    font-size: 15px;
-}
 
 /* 기존 CSS는 유지하고 아래 스타일만 수정/추가 */
 
