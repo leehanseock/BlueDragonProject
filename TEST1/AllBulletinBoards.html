@@ -92,16 +92,16 @@
 
     /* 글쓰기 버튼 */
     .write-btn {
-      position: absolute; /* 화면에 고정 */
-      bottom: 20px; /* 화면 하단에서 떨어진 거리 */
-      right :20px ;
-      padding :10px 16px ;
-      background-color:#007bff ;
-      color:white ;
-      text-decoration : none ;
-      border-radius : 5px;
-      cursor :pointer;
-      box-shadow :0px 4px 6px rgba(0 ,0 ,0 ,0.1)
+      position: absolute;
+      bottom: 120px; /* 페이지네이션과 검색창 위에 위치하도록 조정 */
+      right: 20px;
+      padding: 10px 16px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
     }
 
     /* 페이지네이션 스타일 */
@@ -128,6 +128,50 @@
 
     .pagination a:hover{
       background-color:#ddd
+    }
+
+
+    /* 검색 기능 스타일 */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 20px 0;
+    }
+
+    .search-category {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: white;
+    }
+
+    .search-input {
+      padding: 8px 12px;
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .search-button {
+      padding: 8px 16px;
+      background-color: #5479F2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .search-button:hover {
+      background-color: #4265d6;
     }
 
   </style>
@@ -243,6 +287,22 @@
     <!-- 다음 페이지로 이동하는 링크 -->
     <a href="#">다음 &raquo;</a>
 
+  </div>
+
+
+  <!-- 검색 기능 -->
+  <div class="search-container">
+    <select class="search-category">
+      <option value="제목+내용">제목+내용</option>
+      <option value="제목">제목</option>
+      <option value="내용">내용</option>
+      <option value="글쓴이">글쓴이</option>
+    </select>
+    <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+    <button class="search-button">
+      <i class="fas fa-search"></i>
+      검색
+    </button>
   </div>
 
 </div>
