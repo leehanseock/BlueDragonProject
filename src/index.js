@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import App from "./App";
+import PostFirst from "./postFirst/postFirst";
+import {BrowserRouter} from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <BrowserRouter >
-    //     <App/>
+    //     <PostFirst/>
     // </BrowserRouter>
   <React.StrictMode>
     <App />

@@ -32,21 +32,21 @@ body {
     margin-bottom: 20px;
 }
 
-.post-title {
+.postfirst-post-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
     text-align: left;
 }
 
-.post-info {
+.postfirst-post-info {
     display: flex;
     justify-content: space-between;
     color: #666;
     font-size: 14px;
 }
 
-.post-author {
+.postfirst-post-author {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -64,7 +64,7 @@ body {
     gap: 15px;
 }
 
-.post-content {
+.postfirst-post-content {
     min-height: 300px;
     line-height: 1.6;
     font-size: 15px;
@@ -119,7 +119,7 @@ body {
 }
 
 /* 게시글 리스트 */
-.post-list {
+.postfirst-post-list {
     margin-top: 20px;
     background-color: white;
     border: 1px solid #e5e5e5;

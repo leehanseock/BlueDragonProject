@@ -1,10 +1,11 @@
 import React from 'react';
 import "./Login.css"
 import Header from "../MainResource/Header";
+import Logo from "../MainResource/NgHook";
 
 function LoginForm() {
     return (
-        <div>
+        <div className={"body2"}>
             <h2><img src="https://img.icons8.com/ios/50/000000/login-rounded-right.png" alt="login-icon" width="20" />로그인</h2>
 
             {/* 아이디 입력 */}
@@ -33,7 +34,7 @@ function LoginForm() {
             {/* 버튼 그룹 */}
             <div className="button-group">
                 <button type="submit">로그인</button>
-                <a href="signUp.html">회원가입</a>
+                <Logo name={"회원가입"} className={"button"} loc={"/signup"}/>
             </div>
         </div>
     );
@@ -63,7 +64,6 @@ function Login() {
         <Header/>
         <div className="login-container">
             <LoginForm />
-            <EasyLogin />
         </div>
         </>
     );

@@ -4,7 +4,7 @@
     height: 100px;
 }
 
-.sidebar {
+.sidebar1 {
     position: fixed;
     top: 30%;    /* 화면 상단에서 80% 위치에 고정 */
     left: 10px;     /* 화면 왼쪽에 고정 */
@@ -16,24 +16,24 @@
     transform: translateY(-50%); /* 정확히 80% 지점에 중앙을 맞추기 위해 50%만큼 올림 */
     z-index: 1000; /* 다른 콘텐츠보다 앞에 위치하도록 */
 }
-.cafe-info {
+.cafe-info1 {
     padding-bottom: 15px;
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 15px;
 }
 
-.cafe-name {
+.cafe-name1 {
     color: #5479F2;
     font-size: 16px;
     margin-bottom: 8px;
 }
 
-.member-count {
+.member-count1 {
     color: #666;
     font-size: 13px;
 }
 
-.menu-list li {
+.menu-list1 li {
     display: flex;
     justify-content: space-between;
     padding: 8px 0;
@@ -41,6 +41,6 @@
     font-size: 14px;
 }
 
-.menu-list span {
+.menu-list1 span {
     color: #666;
 }

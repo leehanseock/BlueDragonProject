@@ -6,15 +6,15 @@
     font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
 }
 
-body {
-    float: left;
+/*body {
+    float: none;
     margin: 0;
     background-color: #f5f6f8;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*overflow: hidden;*/
-}
+    !*overflow: hidden;*!
+}*/
 
 /* 헤더 스타일 */
 .header {

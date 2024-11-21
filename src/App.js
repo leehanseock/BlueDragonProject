@@ -8,6 +8,7 @@ import Freetalk from './Freetalk/Freetalk';
 import Login from './Login/Login';
 import SignUp from './signUp/signUp';
 import Notice from './Notice/Notice';
+import WritingPage from "./writing/writing";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/freetalk" element={<Freetalk />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+            <Route path="/write" element={<WritingPage />} />
         </Routes>
       </Router>
   );

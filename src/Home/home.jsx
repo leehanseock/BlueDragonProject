@@ -31,19 +31,8 @@ const Home = () => {
                     </div>
 
                     <div className="post-list">
-                        <div className="post-item">
-                            <span className="post-label">공지</span>
-                            <div className="post-content">
-                                <div className="post-title">청룡인 커뮤니티 이용안내</div>
-                                <div className="post-author">운영자 [11]</div>
-                            </div>
-                            <div className="post-info">
-                                <span>2024.11.05</span>
-                                <span>462</span>
-                            </div>
-                        </div>
-
                         {[
+                            { number: "공지", title: "청룡인 커뮤니티 이용안내", author: "운영자", comments: "11", date: "2024.11.01", views: "462" },
                             { number: "813", title: "집하가 취업된 집했습니다!", author: "행복한회원", comments: "24", date: "2024.11.05", views: "343" },
                             { number: "812", title: "이런 시절 맞나요 보느는 검아자", author: "열심회원", comments: "9", date: "2024.11.05", views: "24" },
                             { number: "811", title: "이상한 곳으로 만드는 현재", author: "새싹회원", comments: "16", date: "2024.11.05", views: "30" }
@@ -65,11 +54,10 @@ const Home = () => {
             </div>
 
             {/* 하단 소식 섹션 */}
-            <section className="news-section">
+            <div className="news-section">
                 <h2>용산소식</h2>
 
                 {/* 소식 카드들 */}
-                <div className="news-cards">
                     {[
                         { title: "공지/교육", description: "건설공사 안전점검 수확길 지정 공고 (2024-11-06)" },
                         { title: "행사/교육", description: "용산청소년문화의집 청소년 동아리 축제 개최 (2024-11-05)" },
@@ -80,9 +68,8 @@ const Home = () => {
                             <p>{card.description}</p>
                         </div>
                     ))}
-                </div>
 
-            </section>
+            </div>
 
         </>
     );

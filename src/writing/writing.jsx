@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Quill의 snow 테마 CSS를 로드
-import './writing.css'; // 별도로 분리된 CSS 파일
+import './writing.css';
+import Header from "../MainResource/Header"; // 별도로 분리된 CSS 파일
 
 const WritingPage = () => {
     const [content, setContent] = useState('');
@@ -9,21 +10,7 @@ const WritingPage = () => {
     return (
         <React.Fragment>
             {/* 상단 헤더 */}
-            <header className="header">
-                <div className="logo" onClick={() => (window.location.href = 'ysProject.html')}>
-                    청룡인
-                </div>
-                <nav className="nav-menu">
-                    <a href="AllBulletinBoards.html">게시판</a>
-                    <a href="notice.html">공지사항</a>
-                    <a href="#blog">챗봇상담</a>
-                    <a href="#mail">정신건강 사업정보</a>
-                </nav>
-                <div className="user-menu">
-                    <a href="login.html">로그인</a>
-                    <a href="../signUp/signUp.jsx">회원가입</a>
-                </div>
-            </header>
+            <Header/>
 
             {/* 메인 컨테이너 */}
             <div className="container">

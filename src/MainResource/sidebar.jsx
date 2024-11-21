@@ -3,12 +3,12 @@ import './MainCss/Sidebar.css'
 
 const Sidebar_ = ({ cafeName, memberCount, menuItems }) => {
     return (
-        <aside className="sidebar">
-            <div className="cafe-info">
-                <h3 className="cafe-name">{cafeName}</h3>
-                <p className="member-count">회원수 {memberCount}명</p>
+        <aside className="sidebar1">
+            <div className="cafe-info1">
+                <h3 className="cafe-name1">{cafeName}</h3>
+                <p className="member-count1">회원수 {memberCount}명</p>
             </div>
-            <ul className="menu-list">
+            <ul className="menu-list1">
                 {menuItems.map((item, index) => (
                     <li key={index}>
                         {item.name} <span>{item.count}</span>

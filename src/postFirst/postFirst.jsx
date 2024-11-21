@@ -9,9 +9,9 @@ const PostContent = () => {
     return (
         <div className="post-container">
             <div className="post-header">
-                <h1 className="post-title">게시글 제목이 여기에 표시됩니다</h1>
-                <div className="post-info">
-                    <div className="post-author">
+                <h1 className="postfirst-post-title">게시글 제목이 여기에 표시됩니다</h1>
+                <div className="postfirst-post-info">
+                    <div className="postfirst-post-author">
                         <div className="author-image"></div>
                         <span>작성자 이름</span>
                         <span>2024.11.19</span>
@@ -23,7 +23,7 @@ const PostContent = () => {
                 </div>
             </div>
 
-            <div className="post-content">
+            <div className="postfirst-post-content">
                 게시글 내용이 여기에 표시됩니다.
                 여러 줄의 텍스트가 들어갈 수 있습니다.
             </div>
@@ -61,7 +61,7 @@ const PostList = () => {
     ];
 
     return (
-        <div className="post-list">
+        <div className="postfirst-post-list">
             <div className="post-list-title">전체글</div>
             <table>
                 <thead>
