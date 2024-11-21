@@ -13,7 +13,7 @@ body {
 
 /* Main Container */
 
-.container2 {
+.ABB-container {
     min-width: 1200px;
     margin: 80px;
     padding: 20px;
@@ -21,32 +21,31 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
-
 }
 
 /* Post List Table */
-table {
+.ABB-post-table {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
 }
 
-table th, table td {
+.ABB-post-table th, .ABB-post-table td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 }
 
-table th {
+.ABB-post-table th {
     background-color: #f8f9fa;
 }
 
-table tr:hover {
+.ABB-post-table tr:hover {
     background-color: #f1f1f1;
 }
 
 /* Write Button */
-.write-btn {
+.ABB-write-btn {
     position: absolute;
     bottom: 120px;
     right: 20px;
@@ -60,13 +59,13 @@ table tr:hover {
 }
 
 /* Pagination */
-.pagination {
+.ABB-pagination {
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
 
-.pagination a {
+.ABB-pagination a {
     color: #007bff;
     padding: 8px 16px;
     text-decoration: none;
@@ -75,18 +74,18 @@ table tr:hover {
     border-radius: 4px;
 }
 
-.pagination a.active {
+.ABB-pagination a.ABB-active {
     background-color: #007bff;
     color: white;
     border: 1px solid #007bff;
 }
 
-.pagination a:hover {
+.ABB-pagination a:hover {
     background-color: #ddd;
 }
 
 /* Search Container Styles */
-.search-container {
+.ABB-search-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,7 +94,7 @@ table tr:hover {
     padding: 20px 0;
 }
 
-.search-category {
+.ABB-search-category {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -103,7 +102,7 @@ table tr:hover {
     background-color: white;
 }
 
-.search-input {
+.ABB-search-input {
     padding: 8px 12px;
     width: 300px;
     border: 1px solid #ddd;
@@ -111,7 +110,7 @@ table tr:hover {
     font-size: 14px;
 }
 
-.search-button {
+.ABB-search-button {
     padding: 8px 16px;
     background-color: #5479F2;
     color: white;
@@ -124,10 +123,10 @@ table tr:hover {
     gap: 5px;
 }
 
-.search-button:hover {
+.ABB-search-button:hover {
     background-color: #4265d6;
 }
 
-.search-button i {
+.ABB-search-button i {
     font-size: 14px;
 }

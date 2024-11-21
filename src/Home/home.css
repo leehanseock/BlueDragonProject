@@ -1,182 +1,281 @@
-/** {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    box-sizing: border-box;*/
-/*    font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;*/
-/*}*/
+/* Global Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+}
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
     background-color: #f5f6f8;
 }
 
-
-
-/* 기존 CSS는 유지하고 아래 스타일만 수정/추가 */
-
-/* 전체 컨테이너 스타일 수정 */
-.main-container {
-    min-width: 1200px;
-    margin: 80px auto 0; /* 상단 여백 추가 */
-    padding: 0;
-    display: flex;
-    justify-content: center; /* 중앙 정렬 */
-    gap: 20px;
-    width: 100%;
-}
-
-/* 사이드바 스타일 */
-.sidebar {
-    width: 200px;
-    min-width: 200px; /* 사이드바 최소 너비 고정 */
-    background: white;
-    border-radius: 4px;
-    padding: 20px;
-    height: fit-content;
-}
-
-.cafe-info {
-    padding-bottom: 15px;
+/* Header */
+.home-header {
+    background-color: white;
     border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 15px;
+    padding: 12px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.cafe-name {
+.home-logo {
+    font-size: 24px;
+    font-weight: bold;
     color: #5479F2;
-    font-size: 16px;
-    margin-bottom: 8px;
 }
 
-.member-count {
+.home-nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.home-nav-menu a {
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.home-user-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.home-user-menu a {
+    color: #5479F2;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* Main Container */
+.home-main-container {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Sidebar */
+.home-sidebar {
+    width: 250px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+}
+
+.home-cafe-info {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.home-cafe-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #5479F2;
+}
+
+.home-member-count {
+    color: #666;
+    font-size: 14px;
+}
+
+.home-menu-list {
+    list-style: none;
+}
+
+.home-menu-list li {
+    padding: 8px 0;
+}
+
+.home-menu-list a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-menu-count {
     color: #666;
     font-size: 13px;
 }
 
-.menu-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    color: #333;
-    font-size: 14px;
-}
-
-.menu-list span {
-    color: #666;
-}
-
-/* 메인 콘텐츠 영역 스타일 */
-.content {
-    flex-grow: 1; /* 남은 공간을 모두 차지하도록 설정 */
-    max-width: calc(100% - 240px); /* 사이드바를 제외한 나머지 공간 차지 */
-    min-width: 800px; /* 최소 너비 설정 */
+/* Content */
+.home-content {
+    flex: 1;
     background: white;
-    border-radius: 4px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
     padding: 20px;
 }
 
-.board-header {
+/* Board Header */
+.home-board-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.more-button {
-    background: #5479F2;
+.home-board-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.home-write-button {
+    background-color: #5479F2;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.post-item {
+/* Post List */
+.home-post-list {
+    border-top: 1px solid #e5e5e5;
+}
+
+.home-post-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e5e5;
     display: flex;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
 }
 
-.post-label, .post-number {
-    width: 50px;
-    color: #5479F2;
+.home-post-number {
+    width: 60px;
+    color: #666;
     font-size: 13px;
 }
 
-.post-content {
+.home-post-info {
     flex: 1;
-    margin: 0 15px;
 }
 
-.post-title {
+.home-post-title {
     color: #333;
+    text-decoration: none;
     font-size: 14px;
     margin-bottom: 4px;
+    display: block;
 }
 
-.post-author {
-    color: #666;
+.home-post-meta {
     font-size: 12px;
-}
-
-.post-info {
-    display: flex;
-    gap: 15px;
     color: #666;
-    font-size: 13px;
-}
-
-/* 용산소식 섹션 스타일 */
-.news-section {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.news-section h2 {
-    margin-bottom: 20px;
-}
-
-.news-cards {
     display: flex;
-    gap: 20px;
+    gap: 8px;
+}
+
+.home-comment-count {
+    color: #5479F2;
+}
+
+.home-post-date {
+    width: 100px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.home-post-views {
+    width: 60px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.home-notice {
+    background-color: #f8f9fa;
+}
+
+.home-notice .home-post-number {
+    color: #5479F2;
+    font-weight: bold;
+}
+
+/* News Section */
+.home-news-section {
+    background-color: white;
+    padding: 40px 20px;
+    text-align: center;
     justify-content: space-between;
 }
 
-.news-card {
-    width: calc(33.33% - 14px); /* 3등분하고 간격 고려 */
-    background: white;
-    padding: 20px;
-    border-radius: 4px;
+.home-news-section h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
 }
 
-.news-card h3 {
-    color: #5479F2;
-    margin-bottom: 10px;
+.home-news-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.home-news-card {
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.home-news-card h3 {
+    font-size: 16px;
+    color: #ee5959; /* 공지/교육 강조 색상 */
+}
+
+.home-news-card p {
     font-size: 14px;
 }
 
-.news-card p {
-    font-size: 13px;
+/* Carousel */
+.home-carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+.home-carousel-arrow {
+    position: relative;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background: #5479F2;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.home-carousel-arrow:hover {
+    background: #f5f5f5;
     color: #333;
 }
 
+.home-carousel-arrow.prev {
+    right: 20px;
+}
 
-
-/*!* 반응형 디자인을 위한 미디어 쿼리 *!*/
-/*@media (max-width: 1200px) {*/
-/*    .main-container {*/
-/*        padding: 0 20px;*/
-/*    }*/
-
-/*    .content {*/
-/*        width: calc(100% - 220px); !* 사이드바 너비 + 간격 제외 *!*/
-/*        min-width: auto;*/
-/*    }*/
-
-/*    .news-section {*/
-/*        width: calc(100% - 40px);*/
-/*        margin: 30px 20px;*/
-/*    }*/
-/*}*/
+.home-carousel-arrow.next {
+    left: 20px;
+}

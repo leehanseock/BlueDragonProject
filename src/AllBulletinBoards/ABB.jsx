@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const NoticeRow = ({ number, title, author, date, views }) => {
     return (
-        <tr className="notice-row">
+        <tr className="ABB-notice-row">
             <td>{number}</td>
             <td><Link to={`/posts/${number}`}>{title}</Link></td>
             <td>{author}</td>
@@ -31,9 +31,9 @@ const PostList = ({ currentPage, itemsPerPage }) => {
     }, [currentPage, itemsPerPage]);
 
     return (
-        <table>
+        <table className="ABB-post-table">
             <thead>
-            <tr>
+            <tr className="ABB-post-header">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -43,7 +43,7 @@ const PostList = ({ currentPage, itemsPerPage }) => {
             </thead>
             <tbody>
             {posts.length === 0 ? (
-                <tr>
+                <tr className="ABB-no-posts">
                     <td colSpan="5">게시물이 없습니다.</td>
                 </tr>
             ) : (
@@ -67,7 +67,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
     const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
-        <div className="pagination">
+        <div className="ABB-pagination">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#"
                onClick={(e) => {
@@ -81,7 +81,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
                 <a
                     href="#"
                     key={number}
-                    className={number === currentPage ? 'active' : ''}
+                    className={number === currentPage ? 'ABB-active' : ''}
                     onClick={(e) => {
                         e.preventDefault();
                         setCurrentPage(number);
@@ -122,13 +122,13 @@ const AllBulletinBoards = () => {
     return (
         <div>
             <Header />
-            <div className="container2">
-                <h2>전체게시판</h2>
+            <div className="ABB-container">
+                <h2 className="ABB-title">전체게시판</h2>
                 <PostList
                     currentPage={currentPage}
                     itemsPerPage={itemsPerPage}
                 />
-                <Link to="/write" className="write-btn">글쓰기</Link>
+                <Link to="/write" className="ABB-write-btn">글쓰기</Link>
                 <Pagination
                     totalPages={totalPages}
                     currentPage={currentPage}

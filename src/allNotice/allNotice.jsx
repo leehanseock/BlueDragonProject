@@ -1,5 +1,7 @@
 import React from 'react';
 import './allNotice.css';
+import { Link } from 'react-router-dom';
+import Header from "../MainResource/Header";
 
 const AllNotice = () => {
     const noticeItems = [
@@ -43,19 +45,7 @@ const AllNotice = () => {
 
     return (
         <>
-            <header className="header">
-                <div className="logo" onClick={() => window.location.href='ysProject.html'}>청룡인</div>
-                <nav className="nav-menu">
-                    <a href="AllBulletinBoards.html">게시판</a>
-                    <a href="notice.html">공지사항</a>
-                    <a href="#blog">챗봇상담</a>
-                    <a href="allNotice.html">정책 알림판</a>
-                </nav>
-                <div className="user-menu">
-                    <a href="login.html">로그인</a>
-                    <a href="signUp.html">회원가입</a>
-                </div>
-            </header>
+            <Header/>
 
             <div className="news-section">
                 <h2>정책 알림판</h2>

@@ -9,6 +9,7 @@ import Login from './Login/Login';
 import SignUp from './signUp/signUp';
 import Notice from './Notice/Notice';
 import WritingPage from "./writing/writing";
+import AllNotice from "./allNotice/allNotice";
 
 
 function App() {
@@ -22,7 +23,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
             <Route path="/write" element={<WritingPage />} />
+            <Route path="/allNotice" element={<AllNotice />} />
         </Routes>
+
       </Router>
   );
 }
