@@ -203,6 +203,8 @@
             color: #5479F2;
             font-weight: bold;
         }
+
+
         /* 하단의 소식 카드 */
         .news-section {
           background-color: white;
@@ -238,6 +240,52 @@
         .news-card p {
           font-size: 14px;
         }
+
+        /*  화살표 CSS  */
+
+        .carousel-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 40px;
+        }
+
+        .carousel-arrow {
+          position: relative;
+          top: 50%;
+          /*transform: translateY(-50%);*/
+          width: 40px;
+          height: 40px;
+          background: #5479F2;
+          border: 1px solid #e0e0e0;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 24px;
+          color: #fff;
+          display: flex;
+          /*align-items: center;*/
+          justify-content: center;
+          transition: all 0.3s ease;
+          z-index: 1;
+        }
+
+        .carousel-arrow:hover {
+          background: #f5f5f5;
+          color: #333;
+        }
+
+        .carousel-arrow.prev {
+          right: 20px;
+        }
+
+        .carousel-arrow.next {
+          left: 20px;
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -247,7 +295,7 @@
             <a href="AllBulletinBoards.html">게시판</a>
             <a href="notice.html">공지사항</a>
             <a href="#blog">챗봇상담</a>
-            <a href="#mail">정신건강 사업정보</a>
+            <a href="allNotice.html">정책 알림판</a>
         </nav>
         <div class="user-menu">
             <a href=login.html>로그인</a>
@@ -335,29 +383,71 @@
     <!-- 하단 소식 섹션 -->
     <div class="news-section">
       <h2>용산소식</h2>
-
-      <!-- 소식 카드들 -->
-      <div class="news-cards">
-        <!-- 첫 번째 카드 -->
-        <div class="news-card">
-          <h3>공지/교육</h3>
-          <p>건설공사 안전점검 수확길 지정 공고 (2024-11-06)</p>
+      <div class="carousel-container">
+        <button class="carousel-arrow prev">&#8249;</button>
+        <div class="news-cards">
+          <!-- 기존 카드들 -->
+          <div class="news-card">
+            <h3>공지/교육</h3>
+            <p>건설공사 안전점검 수확길 지정 공고 (2024-11-06)</p>
+          </div>
+          <div class="news-card">
+            <h3>행사/교육</h3>
+            <p>용산청소년문화의집 청소년 동아리 축제 개최 (2024-11-05)</p>
+          </div>
+          <div class="news-card">
+            <h3>공지/교육</h3>
+            <p>용산구 사건예방 CCTV 설치 안내 (2024-11-06)</p>
+          </div>
         </div>
-
-        <!-- 두 번째 카드 -->
-        <div class="news-card">
-          <h3>행사/교육</h3>
-          <p>용산청소년문화의집 청소년 동아리 축제 개최 (2024-11-05)</p>
-        </div>
-
-        <!-- 세 번째 카드 -->
-        <div class="news-card">
-          <h3>공지/교육</h3>
-          <p>용산구 사건예방 CCTV 설치 안내 (2024-11-06)</p>
-        </div>
-
+        <button class="carousel-arrow next">&#8250;</button>
       </div>
-
     </div>
+    <div class="news-section">
+      <h2>정신건강 사업정보</h2>
+      <div class="carousel-container">
+        <button class="carousel-arrow prev">&#8249;</button>
+        <div class="news-cards">
+          <!-- 기존 카드들 -->
+          <div class="news-card">
+            <h3>공지/교육</h3>
+            <p>건설공사 안전점검 수확길 지정 공고 (2024-11-06)</p>
+          </div>
+          <div class="news-card">
+            <h3>행사/교육</h3>
+            <p>용산청소년문화의집 청소년 동아리 축제 개최 (2024-11-05)</p>
+          </div>
+          <div class="news-card">
+            <h3>공지/교육</h3>
+            <p>용산구 사건예방 CCTV 설치 안내 (2024-11-06)</p>
+          </div>
+        </div>
+        <button class="carousel-arrow next">&#8250;</button>
+      </div>
+    </div>
+    <div class="news-section">
+      <h2>청년지원 정책</h2>
+      <div class="carousel-container">
+        <button class="carousel-arrow prev">&#8249;</button>
+        <div class="news-cards">
+          <!-- 기존 카드들 -->
+          <div class="news-card">
+            <h3>공지/교육</h3>
+            <p>건설공사 안전점검 수확길 지정 공고 (2024-11-06)</p>
+          </div>
+          <div class="news-card">
+            <h3>행사/교육</h3>
+            <p>용산청소년문화의집 청소년 동아리 축제 개최 (2024-11-05)</p>
+          </div>
+          <div class="news-card">
+            <h3>공지/교육</h3>
+            <p>용산구 사건예방 CCTV 설치 안내 (2024-11-06)</p>
+          </div>
+        </div>
+        <button class="carousel-arrow next">&#8250;</button>
+      </div>
+    </div>
+
+
 </body>
 </html>
