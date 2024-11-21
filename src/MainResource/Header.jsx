@@ -13,8 +13,8 @@ function Header() {
             <nav className="nav-menu">
                 <Link to="/all-bulletin-boards">게시판</Link>
                 <Link to="/Notice">공지사항</Link>
-                <Link to="/allNotice">챗봇상담</Link>
-                <Link to="/health-info">정신건강 사업정보</Link>
+                <Link to="/">챗봇상담</Link>
+                <Link to="/allNotice">정책 알림판</Link>
             </nav>
             <div className="user-menu">
                 <Link to="/Login">로그인</Link>

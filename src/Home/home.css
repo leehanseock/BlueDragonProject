@@ -1,5 +1,3 @@
-/* Global Styles */
-
 * {
     margin: 0;
     padding: 0;
@@ -11,58 +9,15 @@ body {
     background-color: #f5f6f8;
 }
 
-/* Header */
-.home-header {
-    background-color: white;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 12px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.home-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #5479F2;
-}
-
-.home-nav-menu {
-    display: flex;
-    gap: 20px;
-}
-
-.home-nav-menu a {
-    color: #333;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-.home-user-menu {
-    display: flex;
-    gap: 20px;
-}
-
-.home-user-menu a {
-    color: #5479F2;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-/* Main Container */
 .home-main-container {
     max-width: 1200px;
-    margin: 60px auto 0;
+    margin: 10px auto 0;
     display: flex;
     padding: 20px;
     gap: 20px;
 }
 
-/* Sidebar */
 .home-sidebar {
     width: 250px;
     background: white;
@@ -110,7 +65,6 @@ body {
     font-size: 13px;
 }
 
-/* Content */
 .home-content {
     flex: 1;
     background: white;
@@ -119,7 +73,6 @@ body {
     padding: 20px;
 }
 
-/* Board Header */
 .home-board-header {
     display: flex;
     justify-content: space-between;
@@ -141,7 +94,6 @@ body {
     cursor: pointer;
 }
 
-/* Post List */
 .home-post-list {
     border-top: 1px solid #e5e5e5;
 }
@@ -205,15 +157,17 @@ body {
     font-weight: bold;
 }
 
-/* News Section */
 .home-news-section {
-    background-color: white;
+    background-color: #ffffff;
     padding: 40px 20px;
     text-align: center;
     justify-content: space-between;
+    margin: 80px auto; /* 추가 필요 */
+    max-width: 1200px; /* 추가 필요 */
 }
 
 .home-news-section h2 {
+    text-align: center;
     font-size: 24px;
     margin-bottom: 30px;
 }
@@ -234,14 +188,13 @@ body {
 
 .home-news-card h3 {
     font-size: 16px;
-    color: #ee5959; /* 공지/교육 강조 색상 */
+    color: #ee5959;
 }
 
 .home-news-card p {
     font-size: 14px;
 }
 
-/* Carousel */
 .home-carousel-container {
     position: relative;
     display: flex;
@@ -252,6 +205,7 @@ body {
 
 .home-carousel-arrow {
     position: relative;
+    margin: 20px;
     top: 50%;
     width: 40px;
     height: 40px;
