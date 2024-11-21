@@ -7,43 +7,43 @@ import Sidebar from "../MainResource/sidebar";
 // 게시글 컴포넌트
 const PostContent = () => {
     return (
-        <div className="post-container">
-            <div className="post-header">
-                <h1 className="postfirst-post-title">게시글 제목이 여기에 표시됩니다</h1>
-                <div className="postfirst-post-info">
-                    <div className="postfirst-post-author">
-                        <div className="author-image"></div>
+        <div className="postFirst-post-container">
+            <div className="postFirst-post-header">
+                <h1 className="postFirst-post-title">게시글 제목이 여기에 표시됩니다</h1>
+                <div className="postFirst-post-info">
+                    <div className="postFirst-post-author">
+                        <div className="postFirst-author-image"></div>
                         <span>작성자 이름</span>
                         <span>2024.11.19</span>
                     </div>
-                    <div className="post-stats">
+                    <div className="postFirst-post-stats">
                         <span>조회 123</span>
                         <span>댓글 45</span>
                     </div>
                 </div>
             </div>
 
-            <div className="postfirst-post-content">
+            <div className="postFirst-post-content">
                 게시글 내용이 여기에 표시됩니다.
                 여러 줄의 텍스트가 들어갈 수 있습니다.
             </div>
 
-            <div className="post-footer">
-                <div className="reaction-buttons">
-                    <button className="button">👍 좋아요</button>
-                    <button className="button">💬 댓글</button>
+            <div className="postFirst-post-footer">
+                <div className="postFirst-reaction-buttons">
+                    <button className="postFirst-button">👍 좋아요</button>
+                    <button className="postFirst-button">💬 댓글</button>
                 </div>
                 <div>
-                    <button className="button">수정</button>
-                    <button className="button">삭제</button>
+                    <button className="postFirst-button">수정</button>
+                    <button className="postFirst-button">삭제</button>
                 </div>
             </div>
 
-            <div className="comments-section">
+            <div className="postFirst-comments-section">
                 <h3>댓글</h3>
-                <div className="comment-form">
-                    <textarea className="comment-input" placeholder="댓글을 입력하세요"></textarea>
-                    <button className="button">댓글 작성</button>
+                <div className="postFirst-comment-form">
+                    <textarea className="postFirst-comment-input" placeholder="댓글을 입력하세요"></textarea>
+                    <button className="postFirst-button">댓글 작성</button>
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@ const PostList = () => {
     ];
 
     return (
-        <div className="postfirst-post-list">
-            <div className="post-list-title">전체글</div>
-            <table>
+        <div className="postFirst-post-list">
+            <div className="postFirst-post-list-title">전체글</div>
+            <table className="postFirst-table">
                 <thead>
                 <tr>
                     <th style={{ width: "60%" }}>제목</th>
@@ -76,7 +76,7 @@ const PostList = () => {
                     <tr key={index}>
                         <td>
                             <a href="#">{post.title}</a>
-                            {post.comments > 0 && <span className="comment-count">[{post.comments}]</span>}
+                            {post.comments > 0 && <span className="postFirst-comment-count">[{post.comments}]</span>}
                         </td>
                         <td>{post.author}</td>
                         <td>{post.date}</td>
@@ -85,7 +85,7 @@ const PostList = () => {
                 </tbody>
             </table>
 
-            <div className="pagination">
+            <div className="postFirst-pagination">
                 <a href="#" className="active">1</a>
                 <a href="#">2</a>
                 <a href="#">3</a>
@@ -99,13 +99,12 @@ const PostList = () => {
 // App 컴포넌트 (최상위 컴포넌트)
 const PostFirst = () => {
     return (
-        <div className="App">
+        <div className="postFirst-app">
             <Header />
             <Sidebar/>
-            <div className="container">
+            <div className="postFirst-container">
                 <PostContent />
                 <PostList />
-
             </div>
         </div>
     );

@@ -9,15 +9,10 @@ const WritingPage = () => {
 
     return (
         <React.Fragment>
-            {/* 상단 헤더 */}
             <Header/>
-
-            {/* 메인 컨테이너 */}
-            <div className="container">
-                {/* 글쓰기 폼 */}
-                <div className="write-form">
-                    {/* 게시판 선택 드롭다운 */}
-                    <select className="dropdown">
+            <div className="writing-container">
+                <div className="writing-write-form">
+                    <select className="writing-dropdown">
                         <option value="자유게시판">자유게시판</option>
                         <option value="질문과답변">질문과답변</option>
                         <option value="갤러리">갤러리</option>
@@ -25,21 +20,15 @@ const WritingPage = () => {
                         <option value="동영상">동영상</option>
                     </select>
 
-                    {/* 제목 입력 */}
                     <input type="text" placeholder="제목을 입력해 주세요." />
-
-                    {/* 경고 문구 */}
                     <p>※ 음란물, 차별, 비하, 명예훼손 등 저작권 침해 게시물은 민 형사상의 책임을 질 수 있습니다.</p>
-
-                    {/* Quill 에디터 */}
                     <ReactQuill theme="snow" value={content} onChange={setContent} />
 
-                    {/* 버튼 그룹 */}
-                    <div className="button-group">
-                        <button type="button" className="cancel">
+                    <div className="writing-button-group">
+                        <button type="button" className="writing-cancel">
                             취소
                         </button>
-                        <button type="submit" className="submit">
+                        <button type="submit" className="writing-submit">
                             등록
                         </button>
                     </div>

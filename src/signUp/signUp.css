@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-.signup-container {
+.signUp-container {
     background-color: white;
     padding: 2rem;
     border-radius: 8px;
@@ -17,23 +17,23 @@ body {
     max-width: 400px;
 }
 
-h2 {
+.signUp-container h2 {
     color: #333;
     text-align: center;
 }
 
-.signup-form {
+.signUp-form {
     display: flex;
     flex-direction: column;
 }
 
-label {
+.signUp-label {
     margin-bottom: 0.5rem;
 }
 
-input,
-select,
-textarea {
+.signUp-input,
+.signUp-select,
+.signUp-textarea {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -41,28 +41,28 @@ textarea {
     border-radius: 4px;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+.signUp-input:focus,
+.signUp-select:focus,
+.signUp-textarea:focus {
     outline: none;
-    border-color: #4a90e2; /* 포커스 시 테두리 색상 변경 */
+    border-color: #4a90e2;
 }
 
-button,
-.btn{
+.signUp-button,
+.signUp-btn {
     padding: 0.75rem;
-    background-color: #4a90e2; /* 버튼 배경색 */
-    color: white; /* 버튼 글자색 */
-    border: none; /* 버튼 테두리 없음 */
-    border-radius: 4px; /* 버튼 모서리 둥글게 */
-    cursor: pointer; /* 마우스 커서 포인터로 변경 */
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #357abd; /* 호버 시 버튼 색상 변경 */
+.signUp-button:hover {
+    background-color: #357abd;
 }
 
-textarea {
+.signUp-textarea {
     height: 100px;
-    resize: vertical; /* 세로 크기 조절 가능 */
+    resize: vertical;
 }

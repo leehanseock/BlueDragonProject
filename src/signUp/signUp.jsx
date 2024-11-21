@@ -43,61 +43,64 @@ function SingUp(props) {
 
 
     return (
-        <div className="signup-container">
+        <div className="signUp-container">
             <h2>회원가입</h2>
-            <form onSubmit={handleSubmit} className="singup-form">
-                <label>
+            <form onSubmit={handleSubmit} className="signUp-form">
+                <label className="signUp-label">
                     이름:
                     <input
                         id="text"
                         value={name}
                         onChange={handleChange}
                         required
+                        className="signUp-input"
                     />
                 </label>
 
-                <label>
+                <label className="signUp-label">
                     이메일:
                     <input
                         id="email"
                         value={email}
                         onChange={handleChange}
                         required
+                        className="signUp-input"
                     />
                 </label>
 
-                <label>
+                <label className="signUp-label">
                     비밀번호:
                     <input
                         id="password"
                         value={password}
                         onChange={handleChange}
                         required
+                        className="signUp-input"
                     />
                 </label>
 
-                <label>
+                <label className="signUp-label">
                     성별:
-                    <select id="gender" onChange={handleChange}>
+                    <select id="gender" onChange={handleChange} className="signUp-select">
                         <option value="남자">남자</option>
                         <option value="여자">여자</option>
                         <option value="기타">기타</option>
                     </select>
                 </label>
 
-                <label>
+                <label className="signUp-label">
                     관심사:
                     <textarea
                         id="interests"
                         onChange={handleChange}
                         placeholder="관심사를 입력하세요"
+                        className="signUp-textarea"
                     />
                 </label>
-                <Logo name={"취소"} className={"btn"} loc={"/"}/>
-                <button type="submit">submit</button>
+                <Logo name={"취소"} className={"signUp-btn"} loc={"/"}/>
+                <button type="submit" className="signUp-button">submit</button>
             </form>
         </div>
     );
-
 }
 export default SingUp;

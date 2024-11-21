@@ -64,47 +64,77 @@
 
 
 /* 메인 컨테이너 */
-.container {
+.writing-container {
     min-width: 1200px;
-    margin : 280px;
-    padding : 20px;
-    background-color :white ;
-    border-radius :8px ;
-    box-shadow :0px 4px 6px rgba(0 ,0 ,0 ,0.1) ;
+    margin: 280px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 }
 
-
-/* 글쓰기 폼 */
-.write-form {
-    margin-top :20px ;
-    background-color :#fff ;
-    padding :20px ;
-    border-radius :8px ;
-    box-shadow :0px 4px 6px rgba(0 ,0 ,0 ,0.1)
+.writing-write-form {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1)
 }
 
-.write-form input[type='text']{
-    width :100% ;
-    padding :10px ; /* 입력 필드 패딩을 증가시킴 */
-    margin-bottom :10px ; /* 입력 필드 간격을 더 넓게 설정 */
-    border :1px solid #ddd ;
-    border-radius :4px
+.writing-write-form input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px
 }
 
-.write-form p{
-    font-size :12px ; /* 글씨 크기를 조금 더 크게 설정 */
-    color:#666 ;
-    margin-bottom :10px
+.writing-write-form p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px
 }
 
-/* Quill 에디터 스타일 */
+.writing-dropdown {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd
+}
+
+.writing-button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px
+}
+
+.writing-button-group button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.writing-button-group button.writing-submit {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white
+}
+
+.writing-button-group button.writing-cancel {
+    margin-top: 10px;
+    background-color: #e9e9e9;
+    color: black
+}
+
+/* Quill editor styles */
 .ql-container {
-    height :300px ; /* Quill 에디터 높이를 늘림 */
+    height: 300px;
 }
 
-#editor-container{
-    width :100%; /* Quill 에디터 너비를 컨테이너에 맞춤 */
-
+#editor-container {
+    width: 100%;
 }
 
 /* 드롭다운 스타일 */
