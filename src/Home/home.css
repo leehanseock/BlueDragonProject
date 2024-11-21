@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -232,4 +234,46 @@ body {
 
 .home-carousel-arrow.next {
     left: 20px;
+}
+
+/* 재미 삼아 배경 넣어봄*/
+.background-text {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #222;
+    container-type: inline-size;
+    overflow: hidden;
+}
+
+.background-text article {
+    background: conic-gradient(
+            from 0deg at 50% 50%,
+            #4a90e2 0deg,
+            #50e3c2 72deg,
+            #b8e986 144deg,
+            #f5a623 216deg,
+            #f06292 288deg,
+            #4a90e2 360deg
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Just Another Hand", cursive;
+    /*font-size: calc(1cqi + 1dvh);*/
+    font-size: large;
+    line-height: 0.75;
+    text-transform: uppercase;
+    text-align: justify;
+    padding: 20px;
+}
+
+.background-text h1,
+.background-text h2,
+.background-text p {
+    display: block;
+    margin: 0.5em 0;
 }
