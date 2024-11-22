@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Login.css"
 import Header from "../MainResource/Header";
 import Logo from "../MainResource/NgHook";
-import api from '../api'; // API 설정 파일 import
+import { login } from '../api';  // API 설정 파일 import
 
 function LoginForm() {
     const [email, setEmail] = useState('');
@@ -12,13 +12,10 @@ function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('/api/login', {
-                email,
-                password
-            });
+            const response = await login(email, password);
 
             // 토큰을 로컬 스토리지에 저장
-            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('token', response.token);
 
             // 로그인 유지 체크시 이메일 저장
             if (rememberMe) {
@@ -33,6 +30,7 @@ function LoginForm() {
             alert(error.response?.data?.error || '로그인에 실패했습니다.');
         }
     };
+
 
     return (
         <div className={"body2"}>

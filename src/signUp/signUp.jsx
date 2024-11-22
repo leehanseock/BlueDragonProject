@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './signUp.css';
 import Logo from "../MainResource/NgHook";
 import Header from "../MainResource/Header";
-import api from '../api';
+import { register } from '../api';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -34,9 +34,9 @@ function SignUp() {
             alert('이메일이 일치하지 않습니다.');
             return;
         }
-
         try {
-            const response = await api.post('/api/register', {
+            // api.post 대신 register 함수 사용
+            const response = await register({
                 email: formData.email,
                 password: formData.password,
                 nickname: formData.nickname

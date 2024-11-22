@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://192.168.24.158:5000', //'http://192.168.24.158:5000/api'에서 바꿈 서버연동을 위해
+    baseURL: 'http://192.168.24.158:5000/api', //'http://192.168.24.158:5000/api'에서 바꿈 서버연동을 위해
     withCredentials: true,
 });
 
@@ -17,18 +17,33 @@ export const fetchPostById = async (postId) => {
     return response.data;
 };
 
+// 게시글 작성
 export const createPost = async (postData) => {
     const response = await api.post(`/posts`, postData);
     return response.data;
 };
 
+// 게시글 수정
 export const updatePost = async (postId, postData) => {
     const response = await api.put(`/posts/${postId}`, postData);
     return response.data;
 };
 
+//  게시글 삭제
 export const deletePost = async (postId) => {
     const response = await api.delete(`/posts/${postId}`);
+    return response.data;
+};
+
+// 회원가입 함수
+export const register = async (userData) => {
+    const response = await api.post('/register', userData);
+    return response.data;
+};
+
+// login 함수 추가
+export const login = async (email, password) => {
+    const response = await api.post('/login', { email, password });
     return response.data;
 };
 
