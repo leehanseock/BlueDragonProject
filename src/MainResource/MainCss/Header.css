@@ -40,3 +40,23 @@
     text-decoration: none;
     font-size: 15px;
 }
+/*     로그인 후 로그아웃 CSS                     */
+.user-nickname {
+    margin-right: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #5479F2;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0;
+    text-decoration: none;
+}
+
+.logout-btn:hover {
+    color: #3d5cd9;
+}
