@@ -1,6 +1,7 @@
 import React from 'react';
 import './home.css';
 import Header from "../MainResource/Header";
+import Logo from "../MainResource/NgHook";
 
 function Home() {
     return (
@@ -255,12 +256,13 @@ function BoardHeader() {
     return (
         <div className="home-board-header">
             <h2 className="home-board-title">전체글보기</h2>
-            <button
+{/*            <button
                 className="home-write-button"
                 onClick={() => window.location.href = 'AllBulletinBoards.html'}
             >
                 더 보기
-            </button>
+            </button>*/}
+            <Logo name={"더 보기"} className={"home-write-button"} loc={"/Notice"}/>
         </div>
     );
 }
