@@ -15,7 +15,7 @@ body {
 
 .ABB-container {
     min-width: 1200px;
-    margin-bottom: 300px;
+    margin: 80px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;

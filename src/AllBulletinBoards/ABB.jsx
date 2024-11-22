@@ -18,11 +18,13 @@ const NoticeRow = ({ number, title, author, date, views }) => {
 
 const PostList = ({ currentPage, itemsPerPage }) => {
     const [posts, setPosts] = useState([]);
+
     useEffect(() => {
         const loadPosts = async () => {
             try {
-                const data = await fetchPosts();
-                setPosts(data.posts);
+                // currentPage와 itemsPerPage를 전달
+                const data = await fetchPosts(currentPage, itemsPerPage);
+                setPosts(data.posts || []);
             } catch (err) {
                 console.error('Error fetching posts:', err);
             }
@@ -110,14 +112,14 @@ const AllBulletinBoards = () => {
     useEffect(() => {
         const loadTotalPages = async () => {
             try {
-                const data = await fetchPosts(1, itemsPerPage);
-                setTotalPages(data.total_pages);
+                const data = await fetchPosts(currentPage, itemsPerPage);
+                setTotalPages(data.total_pages || 1);
             } catch (err) {
                 console.error('Error fetching total pages:', err);
             }
         };
         loadTotalPages();
-    }, [itemsPerPage]);
+    }, [currentPage, itemsPerPage]);
 
     return (
         <div>
