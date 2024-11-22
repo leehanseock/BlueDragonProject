@@ -22,8 +22,9 @@ const PostList = ({ currentPage, itemsPerPage }) => {
     useEffect(() => {
         const loadPosts = async () => {
             try {
-                const data = await fetchPosts();
-                setPosts(data.posts);
+                // currentPage와 itemsPerPage를 전달
+                const data = await fetchPosts(currentPage, itemsPerPage);
+                setPosts(data.posts || []);
             } catch (err) {
                 console.error('Error fetching posts:', err);
             }
@@ -108,6 +109,18 @@ function Notice() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const itemsPerPage = 10;
+
+    useEffect(() => {
+        const loadTotalPages = async () => {
+            try {
+                const data = await fetchPosts(currentPage, itemsPerPage);
+                setTotalPages(data.total_pages || 1);
+            } catch (err) {
+                console.error('Error fetching total pages:', err);
+            }
+        };
+        loadTotalPages();
+    }, [currentPage, itemsPerPage]);
 
     return (
         <div>
