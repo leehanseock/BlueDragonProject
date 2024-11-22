@@ -1,4 +1,3 @@
-
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,6 +10,7 @@ import Notice from './Notice/Notice';
 import WritingPage from "./writing/writing";
 import AllNotice from "./allNotice/allNotice";
 import Info from "./info/info";
+import PostFirst from './postFirst/postFirst';
 
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
           <Route path="/write" element={<WritingPage />} />
           <Route path="/allNotice" element={<AllNotice />} />
           <Route path="/info" element={<Info />} />
+          <Route path="/posts/:postId" element={<PostFirst />} />
         </Routes>
-
       </Router>
   );
 }

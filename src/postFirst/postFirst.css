@@ -13,7 +13,7 @@ body {
 
 /* 컨테이너 */
 .postFirst-container {
-    max-width: 1000px;
+    width: 1000px;
     margin: 80px auto 0;
     padding: 20px;
 }
@@ -190,4 +190,44 @@ body {
     background-color: #5479F2;
     color: white;
     border-color: #5479F2;
+}
+
+
+/* 댓글 작성 CSS*/
+.postFirst-comments-list {
+    margin-top: 20px;
+}
+
+.postFirst-comment {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.postFirst-comment-header {
+    margin-bottom: 10px;
+}
+
+.postFirst-comment-author {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.postFirst-comment-date {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.postFirst-comment-content {
+    color: #333;
+    line-height: 1.5;
+}
+
+.postFirst-comment-input {
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
 }

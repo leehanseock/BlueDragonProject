@@ -46,9 +46,7 @@ body {
 
 /* Write Button */
 .ABB-write-btn {
-    /*position: absolute;*/
-    margin-top: 25px;
-    float: right;
+    position: absolute;
     bottom: 120px;
     right: 20px;
     padding: 10px 16px;
@@ -87,7 +85,7 @@ body {
 }
 
 /* Search Container Styles */
-.ABB-search-container {
+.ABB-search {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,17 +117,6 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.ABB-search-button:hover {
-    background-color: #4265d6;
-}
-
-.ABB-search-button i {
     font-size: 14px;
 }
 

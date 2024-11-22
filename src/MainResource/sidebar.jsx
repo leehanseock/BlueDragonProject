@@ -21,7 +21,7 @@ const Sidebar_ = ({ cafeName, memberCount, menuItems }) => {
 
 const Sidebar = () => {
     const menuItems = [
-        { name: '전채게시판', count: 1000 },
+        { name: '전체게시판', count: 1000 },
         { name: '공지사항', count: 12 },
         { name: '자유게시판', count: 2345 },
         { name: '질문과답변', count: 890 },

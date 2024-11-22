@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ABB.css';
 import Header from "../MainResource/Header";
-import { fetchPosts } from '../api';
+import api,{ fetchPosts } from '../api';
 import { Link } from 'react-router-dom';
 
 const NoticeRow = ({ number, title, author, date, views }) => {
@@ -16,21 +16,10 @@ const NoticeRow = ({ number, title, author, date, views }) => {
     );
 };
 
-const PostList = ({ currentPage, itemsPerPage }) => {
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        const loadPosts = async () => {
-            try {
-                // currentPage와 itemsPerPage를 전달
-                const data = await fetchPosts(currentPage, itemsPerPage);
-                setPosts(data.posts || []);
-            } catch (err) {
-                console.error('Error fetching posts:', err);
-            }
-        };
-        loadPosts();
-    }, [currentPage, itemsPerPage]);
+const PostList = ({ posts = [], loading }) => {  // 기본값 설정
+    if (loading) {
+        return <div className="ABB-loading">로딩 중...</div>;
+    }
 
     return (
         <table className="ABB-post-table">
@@ -44,7 +33,7 @@ const PostList = ({ currentPage, itemsPerPage }) => {
             </tr>
             </thead>
             <tbody>
-            {posts.length === 0 ? (
+            {(!posts || posts.length === 0) ? (  // null 체크 추가
                 <tr className="ABB-no-posts">
                     <td colSpan="5">게시물이 없습니다.</td>
                 </tr>
@@ -107,218 +96,127 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 const AllBulletinBoards = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchScope, setSearchScope] = useState('title');
     const itemsPerPage = 10;
 
+    // PostList 컴포넌트로 전달할 검색 상태
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const handleSearch = async () => {
+        try {
+            setLoading(true);
+            const response = await api.get('/posts', {
+                params: {
+                    query: searchQuery,
+                    scope: searchScope
+                }
+            });
+console.log(response)
+            if (response.data && response.data.posts) {  // 응답 구조 수정
+                setPosts(response.data.posts);
+                setTotalPages(response.data.total_pages || 1);
+            } else {
+                setPosts([]);
+                setTotalPages(1);
+            }
+        } catch (err) {
+            setError('검색 중 오류가 발생했습니다.');
+            console.error('Search error:', err);
+            setPosts([]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // 검색어 입력 핸들러
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    // 검색 범위 변경 핸들러
+    const handleScopeChange = (e) => {
+        setSearchScope(e.target.value);
+    };
+
+    // 검색 버튼 클릭 핸들러
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        handleSearch();
+    };
+
+    // 초기 데이터 로딩
     useEffect(() => {
-        const loadTotalPages = async () => {
+        const loadPosts = async () => {
             try {
+                setLoading(true);
                 const data = await fetchPosts(currentPage, itemsPerPage);
+                setPosts(data.posts);
                 setTotalPages(data.total_pages || 1);
             } catch (err) {
-                console.error('Error fetching total pages:', err);
+                setError('게시글을 불러오는 중 오류가 발생했습니다.');
+                console.error('Error fetching posts:', err);
+            } finally {
+                setLoading(false);
             }
         };
-        loadTotalPages();
+
+        if (!searchQuery) {
+            loadPosts();
+        }
     }, [currentPage, itemsPerPage]);
 
     return (
         <div>
-            <div className="background-text">
-                <article>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
-                        tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                        Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec
-                        nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis
-                        arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus
-                        volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
-                        Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac
-                        mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-                        Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-                        libero.Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit
-                        amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus
-                        nec sem in justo pellentesque facilisis.
-                        Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor,
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
-                        tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                        Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec
-                        nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis
-                        arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus
-                        volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
-                        Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac
-                        mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-                        Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-                        libero.Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit
-                        amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus
-                        nec sem in justo pellentesque facilisis.
-                        Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et,
-                        hendrerit quis, nisi.Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci
-                        vel massa suscipit
-                        pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper
-                        nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis.
-                        Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum
-                        dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula.
-                        Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris
-                        ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis
-                        lectus, et tristique ligula justo vitae magna.Aliquam convallis sollicitudin purus. Praesent
-                        aliquam, enim at fermentum mollis, ligula massa
-                        adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo.
-                        Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit
-                        nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur
-                        iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem
-                        varius purus. Curabitur eu amet.
-                        Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo
-                        quis
-                        pede.Donec interdum, metus et hendrerit aliquet, dolor diam sagittis ligula, eget egestas libero
-                        turpis vel mi. Fusce fermentum. Nullam cursus lacinia erat.Praesent blandit laoreet nibh. Fusce
-                        convallis metus id felis luctus adipiscing. Pellentesque
-                        egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non
-                        est. Ut leo. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper
-                        suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Integer ante arcu,
-                        accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero.
-                        Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet,
-                        nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem
-                        in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo
-                        dolor, tempus non, auctor et, hendrerit quis, nisi.Curabitur ligula sapien, tincidunt non,
-                        euismod vitae, posuere imperdiet, leo. Maecenas
-                        malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere
-                        vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci
-                        luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat
-                        euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean
-                        tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet
-                        augue. In turpis. Pellentesque posuere. Praesent turpis.Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Sed non risus. Suspendisse lectus
-                        tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                        Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec
-                        nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis
-                        arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus
-                        volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
-                        Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac
-                        mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-                        Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-                        libero.Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit
-                        amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus
-                        nec sem in justo pellentesque facilisis.
-                        Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor,
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
-                        tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                        Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec
-                        nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis
-                        arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus
-                        volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
-                        Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac
-                        mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-                        Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-                        libero.Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit
-                        amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus
-                        nec sem in justo pellentesque facilisis.
-                        Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et,
-                        hendrerit quis, nisi.Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci
-                        vel massa suscipit
-                        pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper
-                        nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis.
-                        Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum
-                        dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula.
-                        Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris
-                        ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis
-                        lectus, et tristique ligula justo vitae magna.Aliquam convallis sollicitudin purus. Praesent
-                        aliquam, enim at fermentum mollis, ligula massa
-                        adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo.
-                        Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit
-                        nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur
-                        iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem
-                        varius purus. Curabitur eu amet.
-                        Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo
-                        quis
-                        pede.Donec interdum, metus et hendrerit aliquet, dolor diam sagittis ligula, eget egestas libero
-                        turpis vel mi. Fusce fermentum. Nullam cursus lacinia erat.Praesent blandit laoreet nibh. Fusce
-                        convallis metus id felis luctus adipiscing. Pellentesque
-                        egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non
-                        est. Ut leo. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper
-                        suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Integer ante arcu,
-                        accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero.
-                        Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet,
-                        nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem
-                        in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo
-                        dolor, tempus non, auctor et, hendrerit quis, nisi.Curabitur ligula sapien, tincidunt non,
-                        euismod vitae, posuere imperdiet, leo. Maecenas
-                        malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere
-                        vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci
-                        luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat
-                        euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean
-                        tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet
-                        augue. In turpis. Pellentesque posuere. Praesent turpis., posuere a, pede. Donec nec justo eget
-                        felis facilisis fermentum.Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.
-                        Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero.
-                        Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet,
-                        nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem
-                        in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo
-                        dolor, tempus non, auctor et, hendrerit quis, nisi.Curabitur ligula sapien, tincidunt non,
-                        euismod vitae, posuere imperdiet, leo. Maecenas
-                        malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere
-                        vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci
-                        luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat
-                        euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean
-                        tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet
-                        augue. In turpis. Pellentesque posuere. Praesent turpis. ante arcu, accumsan a, consectetuer
-                        eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-                        libero.Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit
-                        amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus
-                        nec sem in justo pellentesque facilisis.
-                        Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor,
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
-                        tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                        Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec
-                        nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis
-                        arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus
-                        volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
-                        Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac
-                        mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-                        Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                        Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-                        libero.Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit
-                        amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus
-                        nec sem in justo pellentesque facilisis.
-                        Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et,
-                        hendrerit quis, nisi.Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci
-                        vel massa suscipit
-                        pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper
-                        nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis.
-                        Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum
-                        dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula.
-                        Nulla et sapien. Integer tortor tellus, aliquam fMorbisapien eros vitae ligula. Pellentesque
-                        rhoncus nunc et augue. Integer id felis.
-                        Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum
-                        dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula.
-                        Nulla et sapien. Integer tortor tellus, aliquam fMorbi
-                    </p>
-                </article>
-            </div>
             <Header/>
             <div className="ABB-container">
                 <h2 className="ABB-title">전체게시판</h2>
+
+
+                {error && <div className="ABB-error">{error}</div>}
+
                 <PostList
-                    currentPage={currentPage}
-                    itemsPerPage={itemsPerPage}
+                    posts={posts}
+                    loading={loading}
                 />
-                <Link to="/write" className="ABB-write-btn">글쓰기</Link>
+
                 <Pagination
                     totalPages={totalPages}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                 />
+
+                <Link to="/write" className="ABB-write-btn">글쓰기</Link>
+                <div className="ABB-search">
+                    <form onSubmit={handleSearchSubmit}>
+                        <select
+                            className="ABB-search-category"
+                            value={searchScope}
+                            onChange={handleScopeChange}
+                        >
+                            <option value="title_content">제목+내용</option>
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
+                            <option value="nickname">닉네임</option>
+                        </select>
+                        <input
+                            type="text"
+                            className="ABB-search-input"
+                            placeholder="검색어를 입력하세요"
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
+                        />
+                        <button
+                            type="submit"
+                            className="ABB-search-button"
+                            disabled={loading}
+                        >
+                            {loading ? '검색 중...' : '검색'}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );

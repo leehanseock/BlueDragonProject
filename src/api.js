@@ -5,6 +5,8 @@ const api = axios.create({
     withCredentials: true,
 });
 
+export default api;
+
 export const fetchPosts = async (page = 1, perPage = 10) => {
     const response = await api.get(`/posts`, {
         params: { page, per_page: perPage },
@@ -47,6 +49,7 @@ export const login = async (email, password) => {
     return response.data;
 };
 
+
 // 인증 토큰 처리를 위한 API 요청 인터셉터 설정
 api.interceptors.request.use(
     (config) => {
@@ -72,4 +75,4 @@ api.interceptors.response.use(
         return Promise.reject(error);
     }
 );
-export default api;
+
