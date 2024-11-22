@@ -75,6 +75,19 @@ body {
 }
 
 /* 버튼 스타일 */
+.button {
+    background-color: #e9e9e9;
+    padding: 10px 20px;
+    color: black;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.button:hover{
+    background-color: #d4d4d4;
+}
+
 .button-group {
     display: flex;
     justify-content: space-between;
