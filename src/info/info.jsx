@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../can/Gallery/Gallery.css';
 import Header from "../MainResource/Header";
+import {fetchPosts} from "../api";
+import {Link} from "react-router-dom";
 
 
-function PostRow({ number, title, author, date, views }) {
+/*function PostRow({ number, title, author, date, views }) {
     return (
         <tr>
             <td>{number}</td>
@@ -13,24 +15,38 @@ function PostRow({ number, title, author, date, views }) {
             <td>{views}</td>
         </tr>
     );
-}
+}*/
 
-function PostList({ currentPage, itemsPerPage }) {
-    const posts = [
-        { number: '공지', title: '2024년 최신 IT 트렌드 공유', author: '운영자', date: '2024-11-05', views: 462 },
-        { number: '813', title: '효율적인 업무 관리 도구 추천 리스트', author: '효율회원', date: '2024-11-05', views: 343 },
-        { number: '812', title: '개발자들이 자주 사용하는 무료 툴 모음!', author: '개발자회원', date: '2024-11-05', views: 24 },
-        { number: '811', title: '온라인 마케팅 성공 사례 공유하기', author: '마케팅회원', date: '2024-11-05', views: 30 },
-    ];
+const NoticeRow = ({ number, title, author, date, views }) => {
+    return (
+        <tr className="ABB-notice-row">
+            <td>{number}</td>
+            <td><Link to={`/posts/${number}`}>{title}</Link></td>
+            <td>{author}</td>
+            <td>{date}</td>
+            <td>{views}</td>
+        </tr>
+    );
+};
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentPosts = posts.slice(startIndex, endIndex);
+const PostList = ({ currentPage, itemsPerPage }) => {
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        const loadPosts = async () => {
+            try {
+                const data = await fetchPosts();
+                setPosts(data.posts);
+            } catch (err) {
+                console.error('Error fetching posts:', err);
+            }
+        };
+        loadPosts();
+    }, [currentPage, itemsPerPage]);
 
     return (
-        <table>
+        <table className="ABB-post-table">
             <thead>
-            <tr>
+            <tr className="ABB-post-header">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -39,13 +55,67 @@ function PostList({ currentPage, itemsPerPage }) {
             </tr>
             </thead>
             <tbody>
-            {currentPosts.map((post, index) => (
-                <PostRow key={index} {...post} />
-            ))}
+            {posts.length === 0 ? (
+                <tr className="ABB-no-posts">
+                    <td colSpan="5">게시물이 없습니다.</td>
+                </tr>
+            ) : (
+                posts.map((post) => (
+                    <NoticeRow
+                        key={post.post_id}
+                        number={post.post_id}
+                        title={post.title}
+                        author={post.author}
+                        date={post.created_at}
+                        views={post.views}
+                    />
+                ))
+            )}
             </tbody>
         </table>
     );
-}
+};
+
+const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+    const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+    return (
+        <div className="ABB-pagination">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <a href="#"
+               onClick={(e) => {
+                   e.preventDefault();
+                   if (currentPage > 1) setCurrentPage(currentPage - 1);
+               }}
+            >
+                &laquo; 이전
+            </a>
+            {pageNumbers.map((number) => (
+                <a
+                    href="#"
+                    key={number}
+                    className={number === currentPage ? 'ABB-active' : ''}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentPage(number);
+                    }}
+                >
+                    {number}
+                </a>
+            ))}
+            <a href="#"
+               onClick={(e) => {
+                   e.preventDefault();
+                   if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+               }}
+            >
+                다음 &raquo;
+            </a>
+        </div>
+    );
+};
+
+/*
 
 const Pagination = ({ totalPosts, itemsPerPage, currentPage, setCurrentPage }) => {
     const totalPages = Math.ceil(totalPosts / itemsPerPage);
@@ -87,13 +157,13 @@ const Pagination = ({ totalPosts, itemsPerPage, currentPage, setCurrentPage }) =
     );
 };
 
+*/
 
 
 function info() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5; // Number of items per page
-    const totalPosts = 10; // Total number of posts
+    const [currentPage, setCurrentPage,totalPages, setTotalPages] = useState(1);
+    const itemsPerPage = 10;
 
     return (
         <div>
@@ -103,8 +173,7 @@ function info() {
                 <PostList currentPage={currentPage} itemsPerPage={itemsPerPage} />
                 <a href="writing.html" className="write-btn">글쓰기</a>
                 <Pagination
-                    totalPosts={totalPosts}
-                    itemsPerPage={itemsPerPage}
+                    totalPages={totalPages}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                 />
