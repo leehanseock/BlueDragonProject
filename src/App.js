@@ -10,6 +10,7 @@ import SignUp from './signUp/signUp';
 import Notice from './Notice/Notice';
 import WritingPage from "./writing/writing";
 import AllNotice from "./allNotice/allNotice";
+import Info from "./info/info";
 
 
 function App() {
@@ -22,8 +23,9 @@ function App() {
           <Route path="/freetalk" element={<Freetalk />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-            <Route path="/write" element={<WritingPage />} />
-            <Route path="/allNotice" element={<AllNotice />} />
+          <Route path="/write" element={<WritingPage />} />
+          <Route path="/allNotice" element={<AllNotice />} />
+          <Route path="/info" element={<Info />} />
         </Routes>
 
       </Router>
