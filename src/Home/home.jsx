@@ -7,7 +7,7 @@ function Home() {
     return (
         // ----------------------------------------------------------------------------------------------
         <div>
-            <div className="background-text">
+            {/*<div className="background-text">
                 <article>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
                         tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
@@ -164,7 +164,7 @@ function Home() {
                         Nulla et sapien. Integer tortor tellus, aliquam fMorbi
                     </p>
                 </article>
-            </div>
+            </div>*/}
             {/*// -------=-------------------------------------------------------------------------------------------------------------------------------------*/}
             <Header/>
             <div className="home-main-container">
