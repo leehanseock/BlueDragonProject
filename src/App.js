@@ -14,22 +14,22 @@ import PostFirst from './postFirst/postFirst';
 
 
 function App() {
-  return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/all-bulletin-boards" element={<AllBulletinBoards />} />
-          <Route path="/Notice" element={<Notice />} />
-          <Route path="/freetalk" element={<Freetalk />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/write" element={<WritingPage />} />
-          <Route path="/allNotice" element={<AllNotice />} />
-          <Route path="/info" element={<Info />} />
-          <Route path="/posts/:postId" element={<PostFirst />} />
-        </Routes>
-      </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/all-bulletin-boards" element={<AllBulletinBoards />} />
+                <Route path="/Notice" element={<Notice />} />
+                <Route path="/freetalk" element={<Freetalk />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/write" element={<WritingPage />} />
+                <Route path="/allNotice" element={<AllNotice />} />
+                <Route path="/info" element={<Info />} />
+                <Route path="/posts/:postId" element={<PostFirst />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

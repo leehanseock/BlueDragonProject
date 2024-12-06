@@ -1,12 +1,46 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://192.168.24.158:5000/api', //'http://192.168.24.158:5000/api'에서 바꿈 서버연동을 위해
+    baseURL: 'http://175.106.99.242:5001/api',
     withCredentials: true,
 });
+//'http://192.168.24.158:5000/api'에서 바꿈 서버연동을 위해 http://175.106.99.242:3390
 
 export default api;
 
+
+
+// 특정 카테고리의 게시물 반환
+export const fetchPostsByCategory = async (categoryName, page = 1, perPage = 10) => {
+    try {
+        const response = await api.get(`/posts/category/${categoryName}`, {
+            params: { page, per_page: perPage }, // 쿼리 파라미터로 페이지 번호와 항목 수 전달
+        });
+        return response.data; // API에서 반환한 데이터를 그대로 반환
+    } catch (error) {
+        console.error(`Error fetching posts by category: ${error}`);
+        throw error; // 에러를 호출한 쪽에서 처리하도록 전달
+    }
+};
+
+// 게시물 검색 또는 전체 게시물 조회
+export const fetchOrSearchPosts = async (query, scope) => {
+    try {
+        const response = await api.get('/search/posts/', {
+            params: {
+                query: query, // 검색어
+                scope: scope, // 검색 범위 ('title', 'content', 'title_content', 'author')
+            },
+        });
+
+        return response.data; // API에서 반환된 게시물 데이터
+    } catch (error) {
+        console.error(`Error fetching or searching posts: ${error}`);
+        throw error; // 에러를 호출한 쪽에서 처리하도록 전달
+    }
+};
+
+//포스트 반환
 export const fetchPosts = async (page = 1, perPage = 10) => {
     const response = await api.get(`/posts`, {
         params: { page, per_page: perPage },
@@ -14,6 +48,7 @@ export const fetchPosts = async (page = 1, perPage = 10) => {
     return response.data;
 };
 
+//id 반환
 export const fetchPostById = async (postId) => {
     const response = await api.get(`/posts/${postId}`);
     return response.data;

@@ -74,7 +74,7 @@ function SignUp() {
                             onChange={handleChange}
                             placeholder="이메일 주소를 입력하세요."
                             required
-                        />
+                        />y
                         <p className="description">메일 주소만 가입 가능합니다.</p>
                     </div>
 

@@ -10,8 +10,30 @@ const PostContent = ({ post, onDelete }) => {
     const navigate = useNavigate();
     const [commentText, setCommentText] = useState('');
     const [comments, setComments] = useState([]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [nickname, setNickname] = useState('');
+
+
+    useEffect(() => {
+        // 로그인 상태 확인
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true);
+            // JWT 토큰에서 닉네임 추출
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                setNickname(payload.nickname);
+            } catch (error) {
+                console.error('토큰 파싱 에러:', error);
+            }
+        }
+    }, []);
+
+
+
 
     if (!post) return <div>로딩 중...</div>;
+
 
     const handleDelete = async () => {
         try {
@@ -32,7 +54,7 @@ const PostContent = ({ post, onDelete }) => {
 
         const newComment = {
             id: Date.now(),
-            author: 'SJ', // 현재 로그인한 사용자 정보로 대체
+            author: nickname, // 현재 로그인한 사용자 정보로 대체
             content: commentText,
             created_at: new Date().toISOString()
         };

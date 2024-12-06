@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../can/Gallery/Gallery.css';
 import Header from "../MainResource/Header";
 import {Link} from "react-router-dom";
-import {fetchPosts} from "../api";
+import {fetchPosts, fetchPostsByCategory} from "../api";
 
 
 function PostRow({ number, title, author, date, views }) {
@@ -23,7 +23,7 @@ const PostList = ({ currentPage, itemsPerPage }) => {
         const loadPosts = async () => {
             try {
                 // currentPage와 itemsPerPage를 전달
-                const data = await fetchPosts(currentPage, itemsPerPage);
+                const data = await fetchPostsByCategory("공지사항",currentPage, itemsPerPage);
                 setPosts(data.posts || []);
             } catch (err) {
                 console.error('Error fetching posts:', err);

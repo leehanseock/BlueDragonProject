@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ABB.css';
 import Header from "../MainResource/Header";
-import api,{ fetchPosts } from '../api';
+import api, {fetchOrSearchPosts, fetchPosts} from '../api';
 import { Link } from 'react-router-dom';
 
 const NoticeRow = ({ number, title, author, date, views }) => {
@@ -107,27 +107,12 @@ const AllBulletinBoards = () => {
 
     const handleSearch = async () => {
         try {
-            setLoading(true);
-            const response = await api.get('/posts', {
-                params: {
-                    query: searchQuery,
-                    scope: searchScope
-                }
-            });
-console.log(response)
-            if (response.data && response.data.posts) {  // 응답 구조 수정
-                setPosts(response.data.posts);
-                setTotalPages(response.data.total_pages || 1);
-            } else {
-                setPosts([]);
-                setTotalPages(1);
-            }
+            setError(null); // 에러 초기화
+            const results = await fetchOrSearchPosts(searchQuery, searchScope); // 검색 API 호출
+            setPosts(results); // 검색 결과 업데이트
         } catch (err) {
+            console.error('Search failed:', err);
             setError('검색 중 오류가 발생했습니다.');
-            console.error('Search error:', err);
-            setPosts([]);
-        } finally {
-            setLoading(false);
         }
     };
 

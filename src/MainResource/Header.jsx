@@ -23,6 +23,11 @@ function Header() {
         }
     }, []);
 
+
+    // userInfo(()=>{
+    //     return(payload.nickname);
+    // })
+
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
